@@ -1,3 +1,4 @@
+[![CodeFactor](https://www.codefactor.io/repository/github/luizffgv/modern-c-sorting-algorithms/badge)](https://www.codefactor.io/repository/github/luizffgv/modern-c-sorting-algorithms)
 # Modern C Sorting Algorithms
 
 ## Compiling
