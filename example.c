@@ -4,6 +4,10 @@
 #include <Ordering/ordering.h>
 #include <Sorts/quick_sort.h>
 
+
+
+
+
 Ordering CompareInts(void *first, void *second)
 {
     if (*(int *)first > *(int *)second)
@@ -14,6 +18,10 @@ Ordering CompareInts(void *first, void *second)
 }
 
 COMPARER_ARITHMETIC_FUNC_DEF(CompareFloats, float);
+
+
+
+
 
 int main(void)
 {
