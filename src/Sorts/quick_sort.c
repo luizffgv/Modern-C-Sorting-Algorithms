@@ -95,7 +95,7 @@ QUICKSORT_DEF(QuickSortBool, _Bool);
 QUICKSORT_DEF(QuickSortSignedChar, signed char);
 QUICKSORT_DEF(QuickSortUnsignedChar, unsigned char);
 QUICKSORT_DEF(QuickSortInt, int);
-QUICKSORT_DEF(QuickSortUnsigned, int);
+QUICKSORT_DEF(QuickSortUnsigned, unsigned);
 QUICKSORT_DEF(QuickSortLong, long);
 QUICKSORT_DEF(QuickSortUnsignedLong, unsigned long);
 QUICKSORT_DEF(QuickSortLongLong, long long);

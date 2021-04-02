@@ -104,7 +104,7 @@ INSERTIONSORT_DEF(InsertionSortBool, _Bool);
 INSERTIONSORT_DEF(InsertionSortSignedChar, signed char);
 INSERTIONSORT_DEF(InsertionSortUnsignedChar, unsigned char);
 INSERTIONSORT_DEF(InsertionSortInt, int);
-INSERTIONSORT_DEF(InsertionSortUnsigned, int);
+INSERTIONSORT_DEF(InsertionSortUnsigned, unsigned);
 INSERTIONSORT_DEF(InsertionSortLong, long);
 INSERTIONSORT_DEF(InsertionSortUnsignedLong, unsigned long);
 INSERTIONSORT_DEF(InsertionSortLongLong, long long);

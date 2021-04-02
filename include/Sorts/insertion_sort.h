@@ -32,7 +32,7 @@ void InsertionSortBool(_Bool *begin, _Bool *end);
 void InsertionSortSignedChar(signed char *begin, signed char *end);
 void InsertionSortUnsignedChar(unsigned char *begin, unsigned char *end);
 void InsertionSortInt(int *begin, int *end);
-void InsertionSortUnsigned(int *begin, int *end);
+void InsertionSortUnsigned(unsigned *begin, unsigned *end);
 void InsertionSortLong(long *begin, long *end);
 void InsertionSortUnsignedLong(unsigned long *begin, unsigned long *end);
 void InsertionSortLongLong(long long *begin, long long *end);

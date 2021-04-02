@@ -84,7 +84,7 @@ BUBBLESORT_DEF(BubbleSortBool, _Bool);
 BUBBLESORT_DEF(BubbleSortSignedChar, signed char);
 BUBBLESORT_DEF(BubbleSortUnsignedChar, unsigned char);
 BUBBLESORT_DEF(BubbleSortInt, int);
-BUBBLESORT_DEF(BubbleSortUnsigned, int);
+BUBBLESORT_DEF(BubbleSortUnsigned, unsigned);
 BUBBLESORT_DEF(BubbleSortLong, long);
 BUBBLESORT_DEF(BubbleSortUnsignedLong, unsigned long);
 BUBBLESORT_DEF(BubbleSortLongLong, long long);

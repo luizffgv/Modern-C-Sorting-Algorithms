@@ -32,7 +32,7 @@ void BubbleSortBool(_Bool *begin, _Bool *end);
 void BubbleSortSignedChar(signed char *begin, signed char *end);
 void BubbleSortUnsignedChar(unsigned char *begin, unsigned char *end);
 void BubbleSortInt(int *begin, int *end);
-void BubbleSortUnsigned(int *begin, int *end);
+void BubbleSortUnsigned(unsigned *begin, unsigned *end);
 void BubbleSortLong(long *begin, long *end);
 void BubbleSortUnsignedLong(unsigned long *begin, unsigned long *end);
 void BubbleSortLongLong(long long *begin, long long *end);

@@ -36,7 +36,7 @@ void QuickSortBool(_Bool *begin, _Bool *end);
 void QuickSortSignedChar(signed char *begin, signed char *end);
 void QuickSortUnsignedChar(unsigned char *begin, unsigned char *end);
 void QuickSortInt(int *begin, int *end);
-void QuickSortUnsigned(int *begin, int *end);
+void QuickSortUnsigned(unsigned *begin, unsigned *end);
 void QuickSortLong(long *begin, long *end);
 void QuickSortUnsignedLong(unsigned long *begin, unsigned long *end);
 void QuickSortLongLong(long long *begin, long long *end);
