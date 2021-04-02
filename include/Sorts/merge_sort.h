@@ -33,4 +33,33 @@ static_assert(_Generic((MergeSort), Sorter: 1, default: 0),
     "ignore by defining ORDERING_DONT_ENFORCE_INTERFACES");
 #endif // #ifndef ORDERING_DONT_ENFORCE_INTERFACES
 
+void MergeSortBool(_Bool *begin, _Bool *end);
+void MergeSortSignedChar(signed char *begin, signed char *end);
+void MergeSortUnsignedChar(unsigned char *begin, unsigned char *end);
+void MergeSortInt(int *begin, int *end);
+void MergeSortUnsigned(unsigned *begin, unsigned *end);
+void MergeSortLong(long *begin, long *end);
+void MergeSortUnsignedLong(unsigned long *begin, unsigned long *end);
+void MergeSortLongLong(long long *begin, long long *end);
+void MergeSortUnsignedLongLong(unsigned long long *begin, unsigned long long *end);
+void MergeSortFloat(float *begin, float *end);
+void MergeSortDouble(double *begin, double *end);
+void MergeSortLongDouble(long double *begin, long double *end);
+
+#define MergeSortG(begin, end) \
+    _Generic((begin), \
+        _Bool *: MergeSortBool, \
+        signed char *: MergeSortSignedChar, \
+        unsigned char *: MergeSortUnsignedChar, \
+        int *: MergeSortInt, \
+        unsigned *: MergeSortUnsigned, \
+        long *: MergeSortLong, \
+        unsigned long *: MergeSortUnsignedLong, \
+        long long *: MergeSortLongLong, \
+        unsigned long long *: MergeSortUnsignedLongLong, \
+        float *: MergeSortFloat, \
+        double *: MergeSortDouble, \
+        long double *: MergeSortLongDouble \
+    ) (begin, end)
+
 #endif // #ifndef SORTS_MERGE_SORT_H_INCLUDED
