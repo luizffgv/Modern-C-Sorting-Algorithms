@@ -15,8 +15,8 @@
 ## Usage
 --------------------------------------------------------------------------------
 ### Built-in types
-Some of the algorithms have a G variant: a macro that calls the correct function
-according to the type passed. It works using the C11 _Generic keyword.
+Some of the algorithms have a "G" variant: a macro that calls the correct
+function according to the type passed. It works using the C11 _Generic keyword.
 
 Use it by passing a pointer to the first and one-past-last elements of an array:
 
