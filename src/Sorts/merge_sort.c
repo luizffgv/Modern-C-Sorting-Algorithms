@@ -77,8 +77,8 @@ static void name##Merge_(type *dest, Range first, Range second) \
  \
     if (first_.end - first_range_len != (type *)reserved_first_data) \
     { \
-        free(first_.end - first_range_sz - first_range_len); \
-        free(second_.end - second_range_sz - second_range_len); \
+        free(first_.end - first_range_len); \
+        free(second_.end - second_range_len); \
     } \
 } \
 \
