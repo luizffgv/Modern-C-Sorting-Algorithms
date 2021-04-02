@@ -31,6 +31,7 @@ void QuickSort(size_t elem_sz, Range range, Comparer comp);
 static_assert(_Generic((QuickSort), Sorter: 1, default: 0),
     "QuickSort() does not match Sorter interface.\n"
     "ignore by defining ORDERING_DONT_ENFORCE_INTERFACES.");
+#endif // #ifndef ORDERING_DONT_ENFORCE_INTERFACES
 
 void QuickSortBool(_Bool *begin, _Bool *end);
 void QuickSortSignedChar(signed char *begin, signed char *end);
@@ -60,6 +61,5 @@ void QuickSortLongDouble(long double *begin, long double *end);
         double *: QuickSortDouble, \
         long double *: QuickSortLongDouble \
     ) (begin, end)
-#endif // #ifndef ORDERING_DONT_ENFORCE_INTERFACES
 
 #endif // #ifndef SORTS_C_QUICK_SORT_H_INCLUDED

@@ -27,6 +27,11 @@
 
 
 void InsertionSort(size_t elem_sz, Range range, Comparer comp);
+#ifndef ORDERING_DONT_ENFORCE_INTERFACES
+static_assert(_Generic((InsertionSort), Sorter: 1, default: 0),
+    "InsertionSort() does not match Sorter interface!\n"
+    "ignore by defining ORDERING_DONT_ENFORCE_INTERFACES");
+#endif // #ifndef ORDERING_DONT_ENFORCE_INTERFACES
 
 void InsertionSortBool(_Bool *begin, _Bool *end);
 void InsertionSortSignedChar(signed char *begin, signed char *end);
@@ -58,10 +63,5 @@ void InsertionSortLongDouble(long double *begin, long double *end);
     ) (begin, end)
 
 void InsertionSortVerbose(size_t elem_sz, Range range, Comparer comp, size_t interval);
-#ifndef ORDERING_DONT_ENFORCE_INTERFACES
-static_assert(_Generic((InsertionSort), Sorter: 1, default: 0),
-    "InsertionSort() does not match Sorter interface!\n"
-    "ignore by defining ORDERING_DONT_ENFORCE_INTERFACES");
-#endif // #ifndef ORDERING_DONT_ENFORCE_INTERFACES
 
 #endif // #ifndef INSERTION_SORT_H_INCLUDED

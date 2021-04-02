@@ -27,6 +27,11 @@
 
 
 void BubbleSort(size_t elem_sz, Range range, Comparer comp);
+#ifndef ORDERING_DONT_ENFORCE_INTERFACES
+static_assert(_Generic((BubbleSort), Sorter: 1, default: 0),
+    "BubbleSort() does not match Sorter interface!\n"
+    "ignore by defining ORDERING_DONT_ENFORCE_INTERFACES.");
+#endif // #ifndef ORDERING_DONT_ENFORCE_INTERFACES
 
 void BubbleSortBool(_Bool *begin, _Bool *end);
 void BubbleSortSignedChar(signed char *begin, signed char *end);
@@ -56,11 +61,5 @@ void BubbleSortLongDouble(long double *begin, long double *end);
         double *: BubbleSortDouble, \
         long double *: BubbleSortLongDouble \
     ) (begin, end)
-
-#ifndef ORDERING_DONT_ENFORCE_INTERFACES
-static_assert(_Generic((BubbleSort), Sorter: 1, default: 0),
-    "BubbleSort() does not match Sorter interface!\n"
-    "ignore by defining ORDERING_DONT_ENFORCE_INTERFACES.");
-#endif // #ifndef ORDERING_DONT_ENFORCE_INTERFACES
 
 #endif // #ifndef SORTS_BUBBLE_SORT_H_INCLUDED
