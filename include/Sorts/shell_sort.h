@@ -17,9 +17,9 @@
 #ifndef SORTS_SHELL_SORT_H_INCLUDED
 #define SORTS_SHELL_SORT_H_INCLUDED
 
-#include <assert.h>
 #include <stddef.h>
 
+#include "safe_assert.h"
 #include "sorter.h"
 
 
