@@ -108,6 +108,10 @@ noticeably slower, albeit not extremely.
 I implemented these algorithms for my CS course. They are far from the worst,
 but aren't the fastest either.
 
+The current Quicksort implementation is very slow when sorting an array
+with many duplicates. This is not hard to fix, so an update should be coming
+somewhat soon.
+
 On my machine, glibc's `qsort` implementation is usually slower than
 `QuickSortG` until the array contains millions of elements, where it starts
 getting noticeably faster. That's due to many factors about the current `qsort`
