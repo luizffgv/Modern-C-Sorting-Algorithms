@@ -33,7 +33,7 @@ void name(type *begin, type *end) \
               --sorted_bottom) \
     { \
         bool sorted = true; \
- \
+\
         for (type *cur = begin + 1; \
                    cur <= sorted_bottom; \
                    ++cur) \
@@ -44,7 +44,7 @@ void name(type *begin, type *end) \
                 *(cur - 1) = aux; \
                 sorted = false; \
             } \
- \
+\
         if (sorted) \
             break; \
     } \
@@ -81,6 +81,7 @@ void BubbleSort(size_t elem_sz, Range range, Comparer comp)
 
 
 BUBBLESORT_DEF(BubbleSortBool, _Bool);
+BUBBLESORT_DEF(BubbleSortChar, char);
 BUBBLESORT_DEF(BubbleSortSignedChar, signed char);
 BUBBLESORT_DEF(BubbleSortUnsignedChar, unsigned char);
 BUBBLESORT_DEF(BubbleSortInt, int);

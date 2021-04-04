@@ -34,6 +34,7 @@ static_assert(_Generic((BubbleSort), Sorter: 1, default: 0),
 #endif // #ifndef ORDERING_DONT_ENFORCE_INTERFACES
 
 void BubbleSortBool(_Bool *begin, _Bool *end);
+void BubbleSortChar(char *begin, char *end);
 void BubbleSortSignedChar(signed char *begin, signed char *end);
 void BubbleSortUnsignedChar(unsigned char *begin, unsigned char *end);
 void BubbleSortInt(int *begin, int *end);
@@ -49,6 +50,7 @@ void BubbleSortLongDouble(long double *begin, long double *end);
 #define BubbleSortG(begin, end) \
     _Generic((begin), \
         _Bool *: BubbleSortBool, \
+        char *: BubbleSortChar, \
         signed char *: BubbleSortSignedChar, \
         unsigned char *: BubbleSortUnsignedChar, \
         int *: BubbleSortInt, \
@@ -60,6 +62,6 @@ void BubbleSortLongDouble(long double *begin, long double *end);
         float *: BubbleSortFloat, \
         double *: BubbleSortDouble, \
         long double *: BubbleSortLongDouble \
-    ) (begin, end)
+    )(begin, end)
 
 #endif // #ifndef SORTS_BUBBLE_SORT_H_INCLUDED

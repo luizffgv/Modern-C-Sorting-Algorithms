@@ -34,6 +34,7 @@ static_assert(_Generic((InsertionSort), Sorter: 1, default: 0),
 #endif // #ifndef ORDERING_DONT_ENFORCE_INTERFACES
 
 void InsertionSortBool(_Bool *begin, _Bool *end);
+void InsertionSortChar(char *begin, char *end);
 void InsertionSortSignedChar(signed char *begin, signed char *end);
 void InsertionSortUnsignedChar(unsigned char *begin, unsigned char *end);
 void InsertionSortInt(int *begin, int *end);
@@ -49,6 +50,7 @@ void InsertionSortLongDouble(long double *begin, long double *end);
 #define InsertionSortG(begin, end) \
     _Generic((begin), \
         _Bool *: InsertionSortBool, \
+        char *: InsertionSortChar, \
         signed char *: InsertionSortSignedChar, \
         unsigned char *: InsertionSortUnsignedChar, \
         int *: InsertionSortInt, \
@@ -60,7 +62,7 @@ void InsertionSortLongDouble(long double *begin, long double *end);
         float *: InsertionSortFloat, \
         double *: InsertionSortDouble, \
         long double *: InsertionSortLongDouble \
-    ) (begin, end)
+    )(begin, end)
 
 void InsertionSortVerbose(size_t elem_sz, Range range, Comparer comp, size_t interval);
 

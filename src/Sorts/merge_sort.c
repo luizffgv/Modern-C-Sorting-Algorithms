@@ -34,7 +34,7 @@ static void name##Merge_(type *dest, Range first, Range second) \
     size_t first_range_len  = first_range_sz / sizeof(type); \
     size_t second_range_len = second_range_sz / sizeof(type); \
     struct {type *begin, *end;} first_, second_; \
-    \
+\
     first_.begin = first.begin; \
     first_.end = first.end; \
     second_.begin = second.begin; \
@@ -58,7 +58,7 @@ static void name##Merge_(type *dest, Range first, Range second) \
     second_.end = second_.begin + second_range_len; \
     memcpy(first_.begin, first_old_begin, first_range_sz); \
     memcpy(second_.begin, second_old_begin, second_range_sz); \
- \
+\
     while (first_.begin != first_.end && second_.begin != second_.end) \
     { \
         if (*first_.begin <= *second_.begin) \
@@ -66,15 +66,15 @@ static void name##Merge_(type *dest, Range first, Range second) \
         else \
             *dest++ = *second_.begin++; \
     } \
- \
+\
     while (first_.begin != first_.end) \
         *dest++ = *first_.begin++; \
- \
+\
     while (second_.begin != second_.end) \
     { \
         *dest++ = *second_.begin++; \
     } \
- \
+\
     if (first_.end - first_range_len != (type *)reserved_first_data) \
     { \
         free(first_.end - first_range_len); \
@@ -85,7 +85,7 @@ static void name##Merge_(type *dest, Range first, Range second) \
 void name(type *begin, type *end) \
 { \
     const size_t range_len = end - begin; \
- \
+\
     if (range_len > 1) \
     { \
         Range first  = {begin, begin + range_len / 2}; \
@@ -126,6 +126,7 @@ void MergeSort(size_t elem_sz, Range range, Comparer comp)
 
 
 MERGESORT_DEF(MergeSortBool, _Bool);
+MERGESORT_DEF(MergeSortChar, char);
 MERGESORT_DEF(MergeSortSignedChar, signed char);
 MERGESORT_DEF(MergeSortUnsignedChar, unsigned char);
 MERGESORT_DEF(MergeSortInt, int);

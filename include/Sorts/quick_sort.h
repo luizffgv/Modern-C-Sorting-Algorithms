@@ -34,6 +34,7 @@ static_assert(_Generic((QuickSort), Sorter: 1, default: 0),
 #endif // #ifndef ORDERING_DONT_ENFORCE_INTERFACES
 
 void QuickSortBool(_Bool *begin, _Bool *end);
+void QuickSortChar(char *begin, char *end);
 void QuickSortSignedChar(signed char *begin, signed char *end);
 void QuickSortUnsignedChar(unsigned char *begin, unsigned char *end);
 void QuickSortInt(int *begin, int *end);
@@ -49,6 +50,7 @@ void QuickSortLongDouble(long double *begin, long double *end);
 #define QuickSortG(begin, end) \
     _Generic((begin), \
         _Bool *: QuickSortBool, \
+        char *: QuickSortChar, \
         signed char *: QuickSortSignedChar, \
         unsigned char *: QuickSortUnsignedChar, \
         int *: QuickSortInt, \
@@ -60,6 +62,6 @@ void QuickSortLongDouble(long double *begin, long double *end);
         float *: QuickSortFloat, \
         double *: QuickSortDouble, \
         long double *: QuickSortLongDouble \
-    ) (begin, end)
+    )(begin, end)
 
 #endif // #ifndef SORTS_C_QUICK_SORT_H_INCLUDED

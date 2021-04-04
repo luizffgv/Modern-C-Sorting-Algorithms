@@ -27,7 +27,7 @@
 static void *name##Part_(type *begin, type *end) \
 { \
     type pivot_data = *begin; \
- \
+\
     while (1) \
     { \
         while (begin < end && pivot_data <= *end) \
@@ -35,7 +35,7 @@ static void *name##Part_(type *begin, type *end) \
         if (begin >= end) \
             break; \
         *begin++ = *end; \
- \
+\
         while (begin < end && *begin <= pivot_data) \
             ++begin; \
         if (begin >= end) \
@@ -92,6 +92,7 @@ void QuickSort(size_t elem_sz, Range range, Comparer comp)
 
 
 QUICKSORT_DEF(QuickSortBool, _Bool);
+QUICKSORT_DEF(QuickSortChar, char);
 QUICKSORT_DEF(QuickSortSignedChar, signed char);
 QUICKSORT_DEF(QuickSortUnsignedChar, unsigned char);
 QUICKSORT_DEF(QuickSortInt, int);

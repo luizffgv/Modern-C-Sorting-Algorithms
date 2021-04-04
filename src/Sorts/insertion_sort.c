@@ -101,6 +101,7 @@ void InsertionSortVerbose(size_t elem_sz, Range range, Comparer comp, size_t int
 
 
 INSERTIONSORT_DEF(InsertionSortBool, _Bool);
+INSERTIONSORT_DEF(InsertionSortChar, char);
 INSERTIONSORT_DEF(InsertionSortSignedChar, signed char);
 INSERTIONSORT_DEF(InsertionSortUnsignedChar, unsigned char);
 INSERTIONSORT_DEF(InsertionSortInt, int);

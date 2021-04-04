@@ -34,6 +34,7 @@ static_assert(_Generic((MergeSort), Sorter: 1, default: 0),
 #endif // #ifndef ORDERING_DONT_ENFORCE_INTERFACES
 
 void MergeSortBool(_Bool *begin, _Bool *end);
+void MergeSortChar(char *begin, char *end);
 void MergeSortSignedChar(signed char *begin, signed char *end);
 void MergeSortUnsignedChar(unsigned char *begin, unsigned char *end);
 void MergeSortInt(int *begin, int *end);
@@ -49,6 +50,7 @@ void MergeSortLongDouble(long double *begin, long double *end);
 #define MergeSortG(begin, end) \
     _Generic((begin), \
         _Bool *: MergeSortBool, \
+        char *: MergeSortChar, \
         signed char *: MergeSortSignedChar, \
         unsigned char *: MergeSortUnsignedChar, \
         int *: MergeSortInt, \
@@ -60,6 +62,6 @@ void MergeSortLongDouble(long double *begin, long double *end);
         float *: MergeSortFloat, \
         double *: MergeSortDouble, \
         long double *: MergeSortLongDouble \
-    ) (begin, end)
+    )(begin, end)
 
 #endif // #ifndef SORTS_MERGE_SORT_H_INCLUDED
