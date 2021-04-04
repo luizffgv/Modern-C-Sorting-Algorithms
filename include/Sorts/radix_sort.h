@@ -27,13 +27,6 @@
 
 
 
-void RadixSort(size_t elem_sz, Range range, Comparer comp);
-#ifndef ORDERING_DONT_ENFORCE_INTERFACES
-static_assert(_Generic((RadixSort), Sorter: 1, default: 0),
-    "RadixSort() does not match Sorter interface.\n"
-    "ignore by defining ORDERING_DONT_ENFORCE_INTERFACES.");
-#endif // #ifndef ORDERING_DONT_ENFORCE_INTERFACES
-
 void RadixSortBool(_Bool *begin, _Bool *end);
 void RadixSortChar(char *begin, char *end);
 void RadixSortSignedChar(signed char *begin, signed char *end);
