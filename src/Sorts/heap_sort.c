@@ -45,7 +45,6 @@ static void name##Heapify_(type *begin, type *end, size_t root) \
         aux = *root_ptr; \
         *root_ptr = *largest; \
         *largest = aux; \
-        --end; \
         name##Heapify_(begin, end, largest - begin); \
     } \
 } \
@@ -54,18 +53,20 @@ void name(type *begin, type *end) \
 { \
     type aux; \
 \
+    if (end - begin < 2) \
+        return; \
+\
     for (size_t cur_i = (end - begin - 2) / 2; cur_i > 0; --cur_i) \
         name##Heapify_(begin, end, cur_i); \
+    name##Heapify_(begin, end, 0); \
 \
-    if (begin < end) \
-        name##Heapify_(begin, end, 0); \
-\
-    while (end > begin + 1) \
+    for (type *cur = end - 1; cur > begin; --cur) \
     { \
         aux = begin[0]; \
         begin[0] = *(end - 1); \
         *(end - 1) = aux; \
-        name##Heapify_(begin, end--, 0); \
+        --end; \
+        name##Heapify_(begin, cur, 0); \
     } \
 }
 
@@ -81,6 +82,9 @@ static void Heapify_(size_t elem_sz, Range range, size_t root, Comparer comp);
 
 void HeapSort(size_t elem_sz, Range range, Comparer comp)
 {
+    if ((range.end - range.begin) / elem_sz < 2)
+        return;
+
     for (void *cur = range.begin + ((range.end - range.begin - 2 * elem_sz) / 2);
                cur >= range.begin;
                cur -= elem_sz)
