@@ -14,8 +14,6 @@
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-#include <stdbool.h>
-
 #include <MemSwap/memswap.h>
 #include <Sorts/heap_sort.h>
 

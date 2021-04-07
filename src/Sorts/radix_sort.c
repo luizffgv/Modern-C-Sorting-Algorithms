@@ -14,7 +14,6 @@
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-#include <stdbool.h>
 #include <stdlib.h> // For malloc()
 #include <string.h> // For memcpy()
 
