@@ -2,7 +2,6 @@
 # Modern C Sorting Algorithms
 
 ## Compiling
---------------------------------------------------------------------------------
 * Use `include` as an include directory
 * Compile all .c files in `src` the way you want. They can be matched using
 `src/*/*.c` on Linux.
@@ -13,7 +12,6 @@
 
 
 ## Usage
---------------------------------------------------------------------------------
 ### Built-in types
 Some of the algorithms have a "G" variant: a macro that calls the correct
 function according to the type passed. It works using the C11 _Generic keyword.
@@ -104,7 +102,6 @@ noticeably slower, albeit not extremely.
 
 
 ## List of functions
---------------------------------------------------------------------------------
 ### **Using the Sorter interface**:
 BubbleSort, HeapSort, InsertionSort, MergeSort, QuickSort, SelectionSort and
 ShellSort.
@@ -124,7 +121,6 @@ these names.
 
 
 ## Performance
---------------------------------------------------------------------------------
 I implemented these algorithms for my CS course. They are far from the worst,
 but aren't the fastest either.
 
