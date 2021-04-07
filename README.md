@@ -103,7 +103,27 @@ noticeably slower, albeit not extremely.
 
 
 
-### Performance
+## List of functions
+--------------------------------------------------------------------------------
+### **Using the Sorter interface**:
+BubbleSort, HeapSort, InsertionSort, MergeSort, QuickSort, SelectionSort and
+ShellSort.
+
+### **"G" variants (actually macros)**:
+BubbleSortG, HeapSortG, InsertionSortG, MergeSortG, QuickSortG and RadixSortG.
+
+### **Type-specific**:
+Any of the "G" variants with the "G" replaced by "Bool", "Char", "SignedChar",
+"UnsignedChar", "Int", "Unsigned", "Long", "UnsignedLong", "LongLong",
+"UnsignedLongLong", "Float", "Double" or "LongDouble" represent type-specific
+functions that may or may not be implemented, so do not declare anything with
+these names.
+
+
+
+
+
+## Performance
 --------------------------------------------------------------------------------
 I implemented these algorithms for my CS course. They are far from the worst,
 but aren't the fastest either.
