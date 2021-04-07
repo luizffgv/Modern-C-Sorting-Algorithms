@@ -29,7 +29,7 @@ void name(type *begin, type *end) \
     type aux;\
 \
     for (type *sorted_bottom = end - 1; \
-              sorted_bottom != begin; \
+              sorted_bottom > begin; \
               --sorted_bottom) \
     { \
         bool sorted = true; \
@@ -57,7 +57,7 @@ void name(type *begin, type *end) \
 void BubbleSort(size_t elem_sz, Range range, Comparer comp)
 {
     for (void *sorted_bottom = range.end - elem_sz;
-              sorted_bottom != range.begin;
+              sorted_bottom > range.begin;
               sorted_bottom -= elem_sz)
     {
         bool sorted = true;
