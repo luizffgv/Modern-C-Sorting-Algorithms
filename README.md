@@ -102,7 +102,9 @@ noticeably slower, albeit not extremely.
 
 
 ## List of functions
-### **Using the Sorter interface**:
+### **Using the Sorter interface**
+**The following functions are compatible with the Sorter interface defined in
+`include\Sorts\sorter.h`**:
 BubbleSort, HeapSort, InsertionSort, MergeSort, QuickSort, SelectionSort and
 ShellSort.
 
