@@ -118,6 +118,10 @@ Any of the "G" variants with the "G" replaced by "Bool", "Char", "SignedChar",
 functions that may or may not be implemented, so do not declare anything with
 these names.
 
+### **Other**:
+**InsertionSortVerbose**: does insertion sort but also shows progress. Not
+properly documented yet but it's not going to be removed.
+
 
 
 
