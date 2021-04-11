@@ -29,8 +29,8 @@
 #define MERGESORT_DEF(name, type) \
 static void name##Merge_(type *dest, Range first, Range second) \
 { \
-    size_t first_range_sz  = first.end  - first.begin; \
-    size_t second_range_sz = second.end - second.begin; \
+    size_t first_range_sz  = (char *)first.end  - (char *)first.begin; \
+    size_t second_range_sz = (char *)second.end - (char *)second.begin; \
     size_t first_range_len  = first_range_sz / sizeof(type); \
     size_t second_range_len = second_range_sz / sizeof(type); \
     struct {type *begin, *end;} first_, second_; \
@@ -108,12 +108,15 @@ static void MergeUnrestricted_(size_t elem_sz, void *dest, Range first, Range se
 
 void MergeSort(size_t elem_sz, Range range, Comparer comp)
 {
-    const size_t range_sz = range.end - range.begin;
+    const size_t range_sz = (char *)range.end - (char *)range.begin;
 
     if (range_sz / elem_sz > 1)
     {
         // Find middle and align with elem_sz
-        Range first = {range.begin, range.begin + range_sz / elem_sz / 2 * elem_sz};
+        Range first = {
+            range.begin,
+            (char *)range.begin + range_sz / elem_sz / 2 * elem_sz
+        };
         Range second = {first.end , range.end};
         MergeSort(elem_sz, first, comp);
         MergeSort(elem_sz, second, comp);
@@ -125,19 +128,19 @@ void MergeSort(size_t elem_sz, Range range, Comparer comp)
 
 
 
-MERGESORT_DEF(MergeSortBool, _Bool);
-MERGESORT_DEF(MergeSortChar, char);
-MERGESORT_DEF(MergeSortSignedChar, signed char);
-MERGESORT_DEF(MergeSortUnsignedChar, unsigned char);
-MERGESORT_DEF(MergeSortInt, int);
-MERGESORT_DEF(MergeSortUnsigned, unsigned);
-MERGESORT_DEF(MergeSortLong, long);
-MERGESORT_DEF(MergeSortUnsignedLong, unsigned long);
-MERGESORT_DEF(MergeSortLongLong, long long);
-MERGESORT_DEF(MergeSortUnsignedLongLong, unsigned long long);
-MERGESORT_DEF(MergeSortFloat, float);
-MERGESORT_DEF(MergeSortDouble, double);
-MERGESORT_DEF(MergeSortLongDouble, long double);
+MERGESORT_DEF(MergeSortBool, _Bool)
+MERGESORT_DEF(MergeSortChar, char)
+MERGESORT_DEF(MergeSortSignedChar, signed char)
+MERGESORT_DEF(MergeSortUnsignedChar, unsigned char)
+MERGESORT_DEF(MergeSortInt, int)
+MERGESORT_DEF(MergeSortUnsigned, unsigned)
+MERGESORT_DEF(MergeSortLong, long)
+MERGESORT_DEF(MergeSortUnsignedLong, unsigned long)
+MERGESORT_DEF(MergeSortLongLong, long long)
+MERGESORT_DEF(MergeSortUnsignedLongLong, unsigned long long)
+MERGESORT_DEF(MergeSortFloat, float)
+MERGESORT_DEF(MergeSortDouble, double)
+MERGESORT_DEF(MergeSortLongDouble, long double)
 
 
 
@@ -145,8 +148,8 @@ MERGESORT_DEF(MergeSortLongDouble, long double);
 
 void MergeUnrestricted_(size_t elem_sz, void *dest, Range first, Range second, Comparer comp)
 {
-    size_t first_range_sz  = first.end  - first.begin;
-    size_t second_range_sz = second.end - second.begin;
+    size_t first_range_sz  = (char *)first.end  - (char *)first.begin;
+    size_t second_range_sz = (char *)second.end - (char *)second.begin;
 
     // Auxiliary memory
     _Thread_local static char reserved_first_data[RESERVED_DATA_SZ];
@@ -164,8 +167,8 @@ void MergeUnrestricted_(size_t elem_sz, void *dest, Range first, Range second, C
         first.begin  = malloc(first_range_sz);
         second.begin = malloc(second_range_sz);
     }
-    first.end  = first.begin  + first_range_sz;
-    second.end = second.begin + second_range_sz;
+    first.end  = (char *)first.begin  + first_range_sz;
+    second.end = (char *)second.begin + second_range_sz;
     memcpy(first.begin, first_old_begin, first_range_sz);
     memcpy(second.begin, second_old_begin, second_range_sz);
 
@@ -174,34 +177,34 @@ void MergeUnrestricted_(size_t elem_sz, void *dest, Range first, Range second, C
         if (comp(first.begin, second.begin) != ordering_greater)
         {
             memcpy(dest, first.begin, elem_sz);
-            first.begin += elem_sz;
+            first.begin = (char *)first.begin + elem_sz;
         }
         else
         {
             memcpy(dest, second.begin, elem_sz);
-            second.begin += elem_sz;
+            second.begin = (char *)second.begin + elem_sz;
         }
-        dest += elem_sz;
+        dest = (char *)dest + elem_sz;
     }
 
     while (first.begin != first.end)
     {
         memcpy(dest, first.begin, elem_sz);
-        dest += elem_sz;
-        first.begin += elem_sz;
+        dest = (char *)dest + elem_sz;
+        first.begin = (char *)first.begin + elem_sz;
     }
 
     while (second.begin != second.end)
     {
         memcpy(dest, second.begin, elem_sz);
-        dest += elem_sz;
-        second.begin += elem_sz;
+        dest = (char *)dest + elem_sz;
+        second.begin = (char *)second.begin + elem_sz;
     }
 
     // Possibly free auxiliary vectors
-    if (first.end - first_range_sz != reserved_first_data)
+    if ((char *)first.end - first_range_sz != reserved_first_data)
     {
-        free(first.end - first_range_sz);
-        free(second.end - second_range_sz);
+        free((char *)first.end - first_range_sz);
+        free((char *)second.end - second_range_sz);
     }
 }

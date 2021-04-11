@@ -80,7 +80,7 @@ static Pair_ name(type *begin, type *end) \
 #define RADIXSORT_DEF(name, type) \
 static void name##_(type *begin, type *end, type unit) \
 { \
-    size_t count[10] = {}; \
+    size_t count[10] = {0}; \
 \
     for (type *cur = begin; cur < end; ++cur) \
         ++count[ABS(*cur) / unit % 10]; \
@@ -151,34 +151,34 @@ void name(type *begin, type *end) \
 
 
 
-MINMAX_DEF(MinMaxBool_, _Bool);
-MINMAX_DEF(MinMaxChar_, char);
-MINMAX_DEF(MinMaxSignedChar_, signed char);
-MINMAX_DEF(MinMaxUnsignedChar_, unsigned char);
-MINMAX_DEF(MinMaxInt_, int);
-MINMAX_DEF(MinMaxUnsigned_, unsigned);
-MINMAX_DEF(MinMaxLong_, long);
-MINMAX_DEF(MinMaxUnsignedLong_, unsigned long);
-MINMAX_DEF(MinMaxLongLong_, long long);
-MINMAX_DEF(MinMaxUnsignedLongLong_, unsigned long long);
-// MINMAX_DEF(MinMaxFloat_, float);
-// MINMAX_DEF(MinMaxDouble_, double);
-// MINMAX_DEF(MinMaxLongDouble_, long double);
+MINMAX_DEF(MinMaxBool_, _Bool)
+MINMAX_DEF(MinMaxChar_, char)
+MINMAX_DEF(MinMaxSignedChar_, signed char)
+MINMAX_DEF(MinMaxUnsignedChar_, unsigned char)
+MINMAX_DEF(MinMaxInt_, int)
+MINMAX_DEF(MinMaxUnsigned_, unsigned)
+MINMAX_DEF(MinMaxLong_, long)
+MINMAX_DEF(MinMaxUnsignedLong_, unsigned long)
+MINMAX_DEF(MinMaxLongLong_, long long)
+MINMAX_DEF(MinMaxUnsignedLongLong_, unsigned long long)
+// MINMAX_DEF(MinMaxFloat_, float)
+// MINMAX_DEF(MinMaxDouble_, double)
+// MINMAX_DEF(MinMaxLongDouble_, long double)
 
 
 
 
 
-RADIXSORT_DEF(RadixSortBool, _Bool);
-RADIXSORT_DEF(RadixSortChar, char);
-RADIXSORT_DEF(RadixSortSignedChar, signed char);
-RADIXSORT_DEF(RadixSortUnsignedChar, unsigned char);
-RADIXSORT_DEF(RadixSortInt, int);
-RADIXSORT_DEF(RadixSortUnsigned, unsigned);
-RADIXSORT_DEF(RadixSortLong, long);
-RADIXSORT_DEF(RadixSortUnsignedLong, unsigned long);
-RADIXSORT_DEF(RadixSortLongLong, long long);
-RADIXSORT_DEF(RadixSortUnsignedLongLong, unsigned long long);
-// RADIXSORT_DEF(RadixSortFloat, float);
-// RADIXSORT_DEF(RadixSortDouble, double);
-// RADIXSORT_DEF(RadixSortLongDouble, long double);
+RADIXSORT_DEF(RadixSortBool, _Bool)
+RADIXSORT_DEF(RadixSortChar, char)
+RADIXSORT_DEF(RadixSortSignedChar, signed char)
+RADIXSORT_DEF(RadixSortUnsignedChar, unsigned char)
+RADIXSORT_DEF(RadixSortInt, int)
+RADIXSORT_DEF(RadixSortUnsigned, unsigned)
+RADIXSORT_DEF(RadixSortLong, long)
+RADIXSORT_DEF(RadixSortUnsignedLong, unsigned long)
+RADIXSORT_DEF(RadixSortLongLong, long long)
+RADIXSORT_DEF(RadixSortUnsignedLongLong, unsigned long long)
+// RADIXSORT_DEF(RadixSortFloat, float)
+// RADIXSORT_DEF(RadixSortDouble, double)
+// RADIXSORT_DEF(RadixSortLongDouble, long double)

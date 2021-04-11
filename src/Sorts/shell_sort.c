@@ -33,20 +33,22 @@ static unsigned long long A036562_(unsigned long long n);
 void ShellSort(size_t elem_sz, Range range, Comparer comp)
 {
     long long gap_algo_n = -1;
-    while (A036562_(gap_algo_n + 1) < (range.end - range.begin) / elem_sz / 2)
+    while (A036562_(gap_algo_n + 1) < ((char *)range.end - (char *)range.begin)
+                                      / elem_sz / 2)
         ++gap_algo_n;
 
     while (gap_algo_n >= 0)
     {
         long long leap = A036562_(gap_algo_n) * elem_sz;
 
-        for (void *top = range.begin, *top_end = range.end - leap;
+        for (char *top = range.begin, *top_end = (char *)range.end - leap;
                    top < top_end;
                    top += elem_sz)
         {
-            void *cur = top + leap;
+            char *cur = top + leap;
 
-            while (range.begin + leap <= cur && comp(cur, cur - leap) == ordering_less)
+            while ((char *)range.begin + leap <= cur
+                   && comp(cur, cur - leap) == ordering_less)
             {
                 MemSwap(elem_sz, cur, cur - leap);
                 cur -= leap;

@@ -51,11 +51,11 @@ void name(type *begin, type *end) \
 
 void InsertionSort(size_t elem_sz, Range range, Comparer comp)
 {
-    for (void *top = range.begin, *top_end = range.end - elem_sz;
+    for (char *top = range.begin, *top_end = (char *)range.end - elem_sz;
                top < top_end;
                top += elem_sz)
     {
-        void *cur = top + elem_sz;
+        char *cur = top + elem_sz;
         while (cur != range.begin && comp(cur, cur - elem_sz) == ordering_less)
         {
             MemSwap(elem_sz, cur, cur - elem_sz);
@@ -72,14 +72,14 @@ void InsertionSortVerbose(size_t elem_sz, Range range, Comparer comp, size_t int
 {
     putchar('\n');
 
-    size_t n_elems = (range.end - range.begin) / elem_sz;
+    size_t n_elems = ((char *)range.end - (char *)range.begin) / elem_sz;
     size_t ordered_sz = 0;
 
-    for (void *top = range.begin, *top_end = range.end - elem_sz;
+    for (char *top = range.begin, *top_end = (char *)range.end - elem_sz;
                top < top_end;
                top += elem_sz)
     {
-        void *cur = top + elem_sz;
+        char *cur = top + elem_sz;
         while (cur != range.begin && comp(cur, cur - elem_sz) == ordering_less)
         {
             MemSwap(elem_sz, cur, cur - elem_sz);
@@ -100,16 +100,16 @@ void InsertionSortVerbose(size_t elem_sz, Range range, Comparer comp, size_t int
 
 
 
-INSERTIONSORT_DEF(InsertionSortBool, _Bool);
-INSERTIONSORT_DEF(InsertionSortChar, char);
-INSERTIONSORT_DEF(InsertionSortSignedChar, signed char);
-INSERTIONSORT_DEF(InsertionSortUnsignedChar, unsigned char);
-INSERTIONSORT_DEF(InsertionSortInt, int);
-INSERTIONSORT_DEF(InsertionSortUnsigned, unsigned);
-INSERTIONSORT_DEF(InsertionSortLong, long);
-INSERTIONSORT_DEF(InsertionSortUnsignedLong, unsigned long);
-INSERTIONSORT_DEF(InsertionSortLongLong, long long);
-INSERTIONSORT_DEF(InsertionSortUnsignedLongLong, unsigned long long);
-INSERTIONSORT_DEF(InsertionSortFloat, float);
-INSERTIONSORT_DEF(InsertionSortDouble, double);
-INSERTIONSORT_DEF(InsertionSortLongDouble, long double);
+INSERTIONSORT_DEF(InsertionSortBool, _Bool)
+INSERTIONSORT_DEF(InsertionSortChar, char)
+INSERTIONSORT_DEF(InsertionSortSignedChar, signed char)
+INSERTIONSORT_DEF(InsertionSortUnsignedChar, unsigned char)
+INSERTIONSORT_DEF(InsertionSortInt, int)
+INSERTIONSORT_DEF(InsertionSortUnsigned, unsigned)
+INSERTIONSORT_DEF(InsertionSortLong, long)
+INSERTIONSORT_DEF(InsertionSortUnsignedLong, unsigned long)
+INSERTIONSORT_DEF(InsertionSortLongLong, long long)
+INSERTIONSORT_DEF(InsertionSortUnsignedLongLong, unsigned long long)
+INSERTIONSORT_DEF(InsertionSortFloat, float)
+INSERTIONSORT_DEF(InsertionSortDouble, double)
+INSERTIONSORT_DEF(InsertionSortLongDouble, long double)

@@ -23,10 +23,10 @@
 
 void SelectionSort(size_t elem_sz, Range range, Comparer comp)
 {
-    for (void *top = range.begin; top < range.end; top += elem_sz)
+    for (char *top = range.begin; top < (char *)range.end; top += elem_sz)
     {
-        void *lesser = top;
-        for (void *cur = top + elem_sz; cur < range.end; cur += elem_sz)
+        char *lesser = top;
+        for (char *cur = top + elem_sz; cur < (char *)range.end; cur += elem_sz)
             if (comp(cur, lesser) == ordering_less)
                 lesser = cur;
 

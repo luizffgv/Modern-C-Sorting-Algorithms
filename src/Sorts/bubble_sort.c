@@ -56,13 +56,13 @@ void name(type *begin, type *end) \
 
 void BubbleSort(size_t elem_sz, Range range, Comparer comp)
 {
-    for (void *sorted_bottom = range.end - elem_sz;
-              sorted_bottom > range.begin;
+    for (char *sorted_bottom = (char *)range.end - elem_sz;
+              sorted_bottom > (char *)range.begin;
               sorted_bottom -= elem_sz)
     {
         bool sorted = true;
 
-        for (void *cur = range.begin + elem_sz;
+        for (char *cur = (char *)range.begin + elem_sz;
                    cur <= sorted_bottom;
                    cur += elem_sz)
             if (comp(cur, cur - elem_sz) == ordering_less)
@@ -80,16 +80,16 @@ void BubbleSort(size_t elem_sz, Range range, Comparer comp)
 
 
 
-BUBBLESORT_DEF(BubbleSortBool, _Bool);
-BUBBLESORT_DEF(BubbleSortChar, char);
-BUBBLESORT_DEF(BubbleSortSignedChar, signed char);
-BUBBLESORT_DEF(BubbleSortUnsignedChar, unsigned char);
-BUBBLESORT_DEF(BubbleSortInt, int);
-BUBBLESORT_DEF(BubbleSortUnsigned, unsigned);
-BUBBLESORT_DEF(BubbleSortLong, long);
-BUBBLESORT_DEF(BubbleSortUnsignedLong, unsigned long);
-BUBBLESORT_DEF(BubbleSortLongLong, long long);
-BUBBLESORT_DEF(BubbleSortUnsignedLongLong, unsigned long long);
-BUBBLESORT_DEF(BubbleSortFloat, float);
-BUBBLESORT_DEF(BubbleSortDouble, double);
-BUBBLESORT_DEF(BubbleSortLongDouble, long double);
+BUBBLESORT_DEF(BubbleSortBool, _Bool)
+BUBBLESORT_DEF(BubbleSortChar, char)
+BUBBLESORT_DEF(BubbleSortSignedChar, signed char)
+BUBBLESORT_DEF(BubbleSortUnsignedChar, unsigned char)
+BUBBLESORT_DEF(BubbleSortInt, int)
+BUBBLESORT_DEF(BubbleSortUnsigned, unsigned)
+BUBBLESORT_DEF(BubbleSortLong, long)
+BUBBLESORT_DEF(BubbleSortUnsignedLong, unsigned long)
+BUBBLESORT_DEF(BubbleSortLongLong, long long)
+BUBBLESORT_DEF(BubbleSortUnsignedLongLong, unsigned long long)
+BUBBLESORT_DEF(BubbleSortFloat, float)
+BUBBLESORT_DEF(BubbleSortDouble, double)
+BUBBLESORT_DEF(BubbleSortLongDouble, long double)

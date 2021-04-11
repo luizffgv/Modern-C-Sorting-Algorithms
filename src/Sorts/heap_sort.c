@@ -82,18 +82,21 @@ static void Heapify_(size_t elem_sz, Range range, size_t root, Comparer comp);
 
 void HeapSort(size_t elem_sz, Range range, Comparer comp)
 {
-    if ((range.end - range.begin) / elem_sz < 2)
+    if (((char *)range.end - (char *)range.begin) / elem_sz < 2)
         return;
 
-    for (void *cur = range.begin + ((range.end - range.begin - 2 * elem_sz) / 2);
-               cur >= range.begin;
+    for (char *cur = (char *)range.begin + (((char *)range.end
+                     - (char *)range.begin - 2 * elem_sz) / 2);
+               cur >= (char *)range.begin;
                cur -= elem_sz)
-            Heapify_(elem_sz, range, (cur - range.begin) / elem_sz, comp);
+            Heapify_(elem_sz, range, (cur - (char *)range.begin) / elem_sz, comp);
 
-    for (void *cur = range.end - elem_sz; cur > range.begin; cur -= elem_sz)
+    for (char *cur = (char *)range.end - elem_sz;
+               cur > (char *)range.begin;
+               cur -= elem_sz)
     {
         MemSwap(elem_sz, range.begin, cur);
-        range.end -= elem_sz;
+        range.end = (char *)range.end - elem_sz;
         Heapify_(elem_sz, range, 0, comp);
     }
 }
@@ -104,26 +107,28 @@ void HeapSort(size_t elem_sz, Range range, Comparer comp)
 
 static void Heapify_(size_t elem_sz, Range range, size_t root, Comparer comp)
 {
-    void *root_ptr = range.begin + root * elem_sz;
+    char *root_ptr = (char *)range.begin + root * elem_sz;
 
-    void *left = range.begin + (root * 2 + 1) * elem_sz;
-    void *right = range.begin + (root * 2 + 2) * elem_sz;
+    char *left = (char *)range.begin + (root * 2 + 1) * elem_sz;
+    char *right = (char *)range.begin + (root * 2 + 2) * elem_sz;
 
     // Returning early makes the algorithm run almost twice as fast
-    if (left >= range.end)
+    if (left >= (char *)range.end)
         return;
 
-    void *largest = root_ptr;
+    char *largest = root_ptr;
     if (comp(left, largest) == ordering_greater)
         largest = left;
-    if (right < range.end
+    if (right < (char *)range.end
         && comp(right, largest) == ordering_greater)
         largest = right;
 
     if (largest != root_ptr)
     {
         MemSwap(elem_sz, root_ptr, largest);
-        Heapify_(elem_sz, range, (largest - range.begin) / elem_sz, comp);
+        Heapify_(elem_sz,
+                 range, (largest - (char *)range.begin) / elem_sz,
+                 comp);
     }
 }
 
@@ -131,16 +136,16 @@ static void Heapify_(size_t elem_sz, Range range, size_t root, Comparer comp)
 
 
 
-HEAPSORT_DEF(HeapSortBool, _Bool);
-HEAPSORT_DEF(HeapSortChar, char);
-HEAPSORT_DEF(HeapSortSignedChar, signed char);
-HEAPSORT_DEF(HeapSortUnsignedChar, unsigned char);
-HEAPSORT_DEF(HeapSortInt, int);
-HEAPSORT_DEF(HeapSortUnsigned, unsigned);
-HEAPSORT_DEF(HeapSortLong, long);
-HEAPSORT_DEF(HeapSortUnsignedLong, unsigned long);
-HEAPSORT_DEF(HeapSortLongLong, long long);
-HEAPSORT_DEF(HeapSortUnsignedLongLong, unsigned long long);
-HEAPSORT_DEF(HeapSortFloat, float);
-HEAPSORT_DEF(HeapSortDouble, double);
-HEAPSORT_DEF(HeapSortLongDouble, long double);
+HEAPSORT_DEF(HeapSortBool, _Bool)
+HEAPSORT_DEF(HeapSortChar, char)
+HEAPSORT_DEF(HeapSortSignedChar, signed char)
+HEAPSORT_DEF(HeapSortUnsignedChar, unsigned char)
+HEAPSORT_DEF(HeapSortInt, int)
+HEAPSORT_DEF(HeapSortUnsigned, unsigned)
+HEAPSORT_DEF(HeapSortLong, long)
+HEAPSORT_DEF(HeapSortUnsignedLong, unsigned long)
+HEAPSORT_DEF(HeapSortLongLong, long long)
+HEAPSORT_DEF(HeapSortUnsignedLongLong, unsigned long long)
+HEAPSORT_DEF(HeapSortFloat, float)
+HEAPSORT_DEF(HeapSortDouble, double)
+HEAPSORT_DEF(HeapSortLongDouble, long double)

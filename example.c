@@ -17,7 +17,7 @@ Ordering CompareInts(void *first, void *second)
     return ordering_equal;
 }
 
-COMPARER_ARITHMETIC_FUNC_DEF(CompareFloats, float);
+COMPARER_ARITHMETIC_FUNC_DEF(CompareFloats, float)
 
 
 
